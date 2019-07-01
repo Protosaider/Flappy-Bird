@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
+	public event EventHandler OnDied;
+	
 	private const Single JUMP_VELOCITY_MULTIPLIER = 100f;
-
 	private Rigidbody2D _rigidbody2D;
 
 	private void Awake()
@@ -30,6 +31,7 @@ public class Bird : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
-		 
+		_rigidbody2D.bodyType = RigidbodyType2D.Static;
+		OnDied?.Invoke(this, EventArgs.Empty);
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,5 +20,13 @@ public class Pipe
 	{
 		_pipeHead.position += move;
 		_pipeBody.position += move;
+	}
+
+	public Single GetX() => _pipeHead.position.x;
+
+	public void DestroySelf()
+	{
+		UnityEngine.Object.Destroy(_pipeHead.transform.gameObject);
+		UnityEngine.Object.Destroy(_pipeBody.transform.gameObject);
 	}
 }
